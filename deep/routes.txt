@@ -1,0 +1,100 @@
++--------+----------+--------------------------------------+------------------------+-------------------------------------------------------------------------+--------------+
+| Domain | Method   | URI                                  | Name                   | Action                                                                  | Middleware   |
++--------+----------+--------------------------------------+------------------------+-------------------------------------------------------------------------+--------------+
+|        | GET|HEAD | /                                    |                        | Closure                                                                 | web          |
+|        | GET|HEAD | api/user                             |                        | Closure                                                                 | api          |
+|        |          |                                      |                        |                                                                         | auth:api     |
+|        | GET|HEAD | comments                             | comments.index         | App\Http\Controllers\CommentsController@index                           | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | POST     | comments                             | comments.store         | App\Http\Controllers\CommentsController@store                           | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | GET|HEAD | comments/create                      | comments.create        | App\Http\Controllers\CommentsController@create                          | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | DELETE   | comments/{comments}                  | comments.destroy       | App\Http\Controllers\CommentsController@destroy                         | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | PUT      | comments/{comments}                  | comments.update        | App\Http\Controllers\CommentsController@update                          | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | GET|HEAD | comments/{comments}/edit             | comments.edit          | App\Http\Controllers\CommentsController@edit                            | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | POST     | confirm-password                     |                        | App\Http\Controllers\Auth\ConfirmablePasswordController@store           | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | GET|HEAD | confirm-password                     | password.confirm       | App\Http\Controllers\Auth\ConfirmablePasswordController@show            | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | GET|HEAD | dashboard                            | dashboard              | Closure                                                                 | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | POST     | discoveries                          | discoveries.store      | App\Http\Controllers\DiscoveriesController@store                        | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | GET|HEAD | discoveries                          | discoveries.index      | App\Http\Controllers\DiscoveriesController@index                        | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | GET|HEAD | discoveries/create                   | discoveries.create     | App\Http\Controllers\DiscoveriesController@create                       | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | DELETE   | discoveries/{discoveries}            | discoveries.destroy    | App\Http\Controllers\DiscoveriesController@destroy                      | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | PUT      | discoveries/{discoveries}            | discoveries.update     | App\Http\Controllers\DiscoveriesController@update                       | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | GET|HEAD | discoveries/{discoveries}/edit       | discoveries.edit       | App\Http\Controllers\DiscoveriesController@edit                         | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | POST     | email/verification-notification      | verification.send      | App\Http\Controllers\Auth\EmailVerificationNotificationController@store | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        |          |                                      |                        |                                                                         | throttle:6,1 |
+|        | GET|HEAD | forgot-password                      | password.request       | App\Http\Controllers\Auth\PasswordResetLinkController@create            | web          |
+|        |          |                                      |                        |                                                                         | guest        |
+|        | POST     | forgot-password                      | password.email         | App\Http\Controllers\Auth\PasswordResetLinkController@store             | web          |
+|        |          |                                      |                        |                                                                         | guest        |
+|        | GET|HEAD | idea_discovery                       | idea_discovery.index   | App\Http\Controllers\IdeaDiscoveryController@index                      | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | POST     | idea_discovery                       | idea_discovery.store   | App\Http\Controllers\IdeaDiscoveryController@store                      | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | GET|HEAD | idea_discovery/create                | idea_discovery.create  | App\Http\Controllers\IdeaDiscoveryController@create                     | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | DELETE   | idea_discovery/{idea_discovery}      | idea_discovery.destroy | App\Http\Controllers\IdeaDiscoveryController@destroy                    | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | PUT      | idea_discovery/{idea_discovery}      | idea_discovery.update  | App\Http\Controllers\IdeaDiscoveryController@update                     | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | GET|HEAD | idea_discovery/{idea_discovery}/edit | idea_discovery.edit    | App\Http\Controllers\IdeaDiscoveryController@edit                       | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | POST     | ideas                                | ideas.store            | App\Http\Controllers\IdeasController@store                              | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | GET|HEAD | ideas                                | ideas.index            | App\Http\Controllers\IdeasController@index                              | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | GET|HEAD | ideas/create                         | ideas.create           | App\Http\Controllers\IdeasController@create                             | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | DELETE   | ideas/{ideas}                        | ideas.destroy          | App\Http\Controllers\IdeasController@destroy                            | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | PUT      | ideas/{ideas}                        | ideas.update           | App\Http\Controllers\IdeasController@update                             | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | GET|HEAD | ideas/{ideas}/edit                   | ideas.edit             | App\Http\Controllers\IdeasController@edit                               | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | GET|HEAD | login                                | login                  | App\Http\Controllers\Auth\AuthenticatedSessionController@create         | web          |
+|        |          |                                      |                        |                                                                         | guest        |
+|        | POST     | login                                |                        | App\Http\Controllers\Auth\AuthenticatedSessionController@store          | web          |
+|        |          |                                      |                        |                                                                         | guest        |
+|        | POST     | logout                               | logout                 | App\Http\Controllers\Auth\AuthenticatedSessionController@destroy        | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | POST     | register                             |                        | App\Http\Controllers\Auth\RegisteredUserController@store                | web          |
+|        |          |                                      |                        |                                                                         | guest        |
+|        | GET|HEAD | register                             | register               | App\Http\Controllers\Auth\RegisteredUserController@create               | web          |
+|        |          |                                      |                        |                                                                         | guest        |
+|        | POST     | reset-password                       | password.update        | App\Http\Controllers\Auth\NewPasswordController@store                   | web          |
+|        |          |                                      |                        |                                                                         | guest        |
+|        | GET|HEAD | reset-password/{token}               | password.reset         | App\Http\Controllers\Auth\NewPasswordController@create                  | web          |
+|        |          |                                      |                        |                                                                         | guest        |
+|        | POST     | user                                 | user.store             | App\Http\Controllers\UserController@store                               | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | GET|HEAD | user                                 | user.index             | App\Http\Controllers\UserController@index                               | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | GET|HEAD | user/create                          | user.create            | App\Http\Controllers\UserController@create                              | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | DELETE   | user/{user}                          | user.destroy           | App\Http\Controllers\UserController@destroy                             | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | PUT      | user/{user}                          | user.update            | App\Http\Controllers\UserController@update                              | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | GET|HEAD | user/{user}/edit                     | user.edit              | App\Http\Controllers\UserController@edit                                | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | GET|HEAD | verify-email                         | verification.notice    | App\Http\Controllers\Auth\EmailVerificationPromptController@__invoke    | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        | GET|HEAD | verify-email/{id}/{hash}             | verification.verify    | App\Http\Controllers\Auth\VerifyEmailController@__invoke                | web          |
+|        |          |                                      |                        |                                                                         | auth         |
+|        |          |                                      |                        |                                                                         | signed       |
+|        |          |                                      |                        |                                                                         | throttle:6,1 |
++--------+----------+--------------------------------------+------------------------+-------------------------------------------------------------------------+--------------+
